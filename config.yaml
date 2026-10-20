@@ -1,0 +1,84 @@
+# Missing Data Research Study Configuration
+# Single source of truth shared by the whole team
+
+base_seed: 42
+test_size: 0.2
+target: price
+log_target_name: log_price
+
+missingness_columns:
+  - sqft_living
+  - grade
+  - bathrooms
+  - yr_built
+
+always_observed:
+  - price
+  - log_price
+  - lat
+  - long
+
+mechanisms:
+  - MCAR
+  - MAR
+  - MNAR
+
+levels:
+  - 0.10
+  - 0.20
+  - 0.30
+  - 0.40
+  - 0.50
+
+n_repeats: 5
+mar_driver: long
+strength: 1.0
+
+imputation_methods:
+  - mean
+  - knn
+  - regression
+  - random_forest
+
+# Data cleaning configurations
+date_format: "%Y%m%dT%H%M%S"
+date_column: date
+id_column: id
+renovated_column_source: yr_renovated
+renovated_column_target: renovated
+
+columns_to_drop:
+  - id
+  - date
+  - zipcode
+  - sqft_above
+  - sqft_basement
+
+expected_columns:
+  - price
+  - log_price
+  - bedrooms
+  - bathrooms
+  - sqft_living
+  - sqft_lot
+  - floors
+  - waterfront
+  - view
+  - condition
+  - grade
+  - yr_built
+  - lat
+  - long
+  - sqft_living15
+  - sqft_lot15
+  - renovated
+
+expected_rows: 21436
+
+# Project file paths
+raw_data_path: data/raw/kc_house_data.csv
+clean_data_path: data/processed/clean_data.csv
+split_indices_path: data/processed/split_indices.csv
+raw_csv_md5: b1e7bdf4f3e61792c0979a5697dc7145
+generated_missing_dir: data/generated_missing
+alpha: 0.05
