@@ -1,0 +1,300 @@
+{
+  "generated_at_utc": "2026-10-21T03:43:21+00:00",
+  "python": "3.14.6",
+  "summary": {
+    "PASS": 41,
+    "WARN": 0,
+    "FAIL": 0,
+    "INFO": 7
+  },
+  "checks": [
+    {
+      "section": "1. Environment",
+      "name": "Python version",
+      "status": "PASS",
+      "detail": "3.14.6 (need >= 3.9)"
+    },
+    {
+      "section": "1. Environment",
+      "name": "Virtual environment active",
+      "status": "PASS",
+      "detail": "yes"
+    },
+    {
+      "section": "1. Environment",
+      "name": "numpy",
+      "status": "PASS",
+      "detail": "version 2.5.4"
+    },
+    {
+      "section": "1. Environment",
+      "name": "pandas",
+      "status": "PASS",
+      "detail": "version 3.0.6"
+    },
+    {
+      "section": "1. Environment",
+      "name": "scikit-learn",
+      "status": "PASS",
+      "detail": "version 1.9.1"
+    },
+    {
+      "section": "1. Environment",
+      "name": "PyYAML",
+      "status": "PASS",
+      "detail": "version 6.0.3"
+    },
+    {
+      "section": "1. Environment",
+      "name": "matplotlib",
+      "status": "PASS",
+      "detail": "version 3.11.2"
+    },
+    {
+      "section": "1. Environment",
+      "name": "scipy",
+      "status": "PASS",
+      "detail": "version 1.18.1"
+    },
+    {
+      "section": "1. Environment",
+      "name": "statsmodels",
+      "status": "PASS",
+      "detail": "version 0.15.0"
+    },
+    {
+      "section": "1. Environment",
+      "name": "pytest",
+      "status": "PASS",
+      "detail": "version 9.1.1"
+    },
+    {
+      "section": "2. Config (config.yaml)",
+      "name": "Required keys",
+      "status": "PASS",
+      "detail": "15 keys present"
+    },
+    {
+      "section": "2. Config (config.yaml)",
+      "name": "Corrupted conditions (mechanisms x levels x repeats)",
+      "status": "PASS",
+      "detail": "75 (expected 75)"
+    },
+    {
+      "section": "2. Config (config.yaml)",
+      "name": "Imputed runs (methods x conditions)",
+      "status": "PASS",
+      "detail": "300 (expected 300)"
+    },
+    {
+      "section": "2. Config (config.yaml)",
+      "name": "Design summary",
+      "status": "INFO",
+      "detail": "mechanisms=['MCAR', 'MAR', 'MNAR'], levels=[0.1, 0.2, 0.3, 0.4, 0.5], repeats=5, methods=['mean', 'knn', 'regression', 'random_forest'], seed=42, test_size=0.2"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "data/processed/clean_data.csv",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "data/processed/split_indices.csv",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "data/raw/kc_house_data.csv",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "data/generated_missing/ground_truth.csv.gz",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "data/generated_missing/split_indices.csv",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "data/generated_missing/manifest.csv",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "src/handoff.py",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "src/statistics.py",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "src/data_processing.py",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "src/missingness.py",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "src/aggregate.py",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "src/plots.py",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "3. Repo files",
+      "name": "src/evaluation.py",
+      "status": "PASS",
+      "detail": "found"
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "load_condition()",
+      "status": "PASS",
+      "detail": "returned without error"
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "Returned keys",
+      "status": "PASS",
+      "detail": "corrupted, truth, mask, train_idx, test_idx"
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "corrupted / truth shape",
+      "status": "PASS",
+      "detail": "corrupted=(21436, 17), truth=(21436, 17), expected=(21436, 17)"
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "Column order matches config expected_columns",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "mask covers the 4 missingness columns",
+      "status": "PASS",
+      "detail": "mask shape=(21436, 4), columns=['sqft_living', 'grade', 'bathrooms', 'yr_built']"
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "corrupted, truth and mask share the same index (row_index)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "NaNs appear only in missingness columns",
+      "status": "PASS",
+      "detail": "columns with NaN: ['bathrooms', 'sqft_living', 'grade', 'yr_built']"
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "Protected columns have 0 NaN ['price', 'log_price', 'lat', 'long']",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "truth has 0 NaN",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "mask equals corrupted.isna() on missingness columns",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "Observed values equal truth (missingness columns and all other columns)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "Split sizes",
+      "status": "PASS",
+      "detail": "train=17148, test=4288, test fraction=0.2000 (config test_size=0.2)"
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "Train and test are disjoint and cover every row",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "4. Condition load (MAR, 0.30, repeat 0)",
+      "name": "Realised missingness rate per column (target 0.30)",
+      "status": "PASS",
+      "detail": "sqft_living=0.300, grade=0.300, bathrooms=0.300, yr_built=0.300"
+    },
+    {
+      "section": "5. Manifest",
+      "name": "Conditions listed",
+      "status": "PASS",
+      "detail": "75 (expected 75); columns: ['mechanism', 'level', 'repeat', 'path', 'seed_train', 'seed_test', 'train_nan_sqft_living', 'train_nan_grade', 'train_nan_bathrooms', 'train_nan_yr_built', 'test_nan_sqft_living', 'test_nan_grade', 'test_nan_bathrooms', 'test_nan_yr_built', 'train_no_missing_fraction', 'test_no_missing_fraction']"
+    },
+    {
+      "section": "6. Imputed files (Member 2 handoff)",
+      "name": "Files present",
+      "status": "INFO",
+      "detail": "0 of 300 expected under data/imputed/"
+    },
+    {
+      "section": "6. Imputed files (Member 2 handoff)",
+      "name": "method 'mean'",
+      "status": "INFO",
+      "detail": "0/75"
+    },
+    {
+      "section": "6. Imputed files (Member 2 handoff)",
+      "name": "method 'knn'",
+      "status": "INFO",
+      "detail": "0/75"
+    },
+    {
+      "section": "6. Imputed files (Member 2 handoff)",
+      "name": "method 'regression'",
+      "status": "INFO",
+      "detail": "0/75"
+    },
+    {
+      "section": "6. Imputed files (Member 2 handoff)",
+      "name": "method 'random_forest'",
+      "status": "INFO",
+      "detail": "0/75"
+    },
+    {
+      "section": "6. Imputed files (Member 2 handoff)",
+      "name": "data/imputed/ folder",
+      "status": "INFO",
+      "detail": "does not exist yet; Member 2 has not delivered (this is expected before M1 can start)"
+    }
+  ]
+}
