@@ -1,0 +1,6 @@
+# Keep data files byte-for-byte identical on every OS (no line-ending conversion).
+# Without this, Windows checkouts rewrite LF to CRLF in the CSVs, which changes the
+# raw-data checksum that tests/test_cleaning.py verifies.
+*.csv -text
+*.gz binary
+*.png binary
