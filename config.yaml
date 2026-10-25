@@ -82,3 +82,29 @@ split_indices_path: data/processed/split_indices.csv
 raw_csv_md5: b1e7bdf4f3e61792c0979a5697dc7145
 generated_missing_dir: data/generated_missing
 alpha: 0.05
+
+# Member 3 / Module 3: predictive track (fixed, untuned Random Forest used for EVERY condition)
+predictive:
+  random_state: 42        # forest seed (same as base_seed)
+  score_on_truth: true    # FR-3.7 diagnostic: also score on complete test rows (scoring only)
+  rf_params:
+    n_estimators: 300
+    max_depth: null
+    min_samples_leaf: 1
+    max_features: 1.0
+    n_jobs: -1
+
+# Member 3 / Module 5: Case A/B/C/D thresholds (decision D3).
+# FIX THESE AND COMMIT BEFORE LOOKING AT ANY IMPUTED RESULTS. They are anchored to the
+# problem definition, not to results. Then set thresholds_locked: true and commit again.
+# Both metrics are "smaller is better"; a condition is "good" when its repeat-averaged value is <= the threshold.
+cases:
+  thresholds_locked: false          # PROVISIONAL until the team agrees (D3) and commits
+  stat_metric: stat_mean_abs_z_affected
+  stat_threshold: 1.0               # mean |z difference| on the 4 affected coefficients, in reference-SE units:
+                                    # a shift within one reference standard error is inside the complete-data
+                                    # estimate's own sampling uncertainty
+  pred_metric: rmse_gap_rel
+  pred_threshold: 0.05              # (RMSE of model trained on imputed data - RMSE of complete-data model) / RMSE of
+                                    # complete-data model; at most 5% worse than the upper bound counts as predicting well
+  sensitivity_factors: [0.5, 0.75, 1.0, 1.25, 1.5, 2.0]   # each threshold is multiplied by these for FR-5.4
