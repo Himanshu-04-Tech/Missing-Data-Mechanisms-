@@ -1,0 +1,13 @@
+varied,factor,stat_threshold,pred_threshold,A,B,C,D,n_changed,is_baseline,thresholds_status
+stat,0.5,0.5,0.05,1,18,0,41,4,False,PROVISIONAL
+stat,0.75,0.75,0.05,2,17,0,41,3,False,PROVISIONAL
+stat,1.0,1.0,0.05,5,14,0,41,0,True,PROVISIONAL
+stat,1.25,1.25,0.05,5,14,0,41,0,False,PROVISIONAL
+stat,1.5,1.5,0.05,6,13,1,40,2,False,PROVISIONAL
+stat,2.0,2.0,0.05,9,10,2,39,6,False,PROVISIONAL
+pred,0.5,1.0,0.025,3,3,2,52,13,False,PROVISIONAL
+pred,0.75,1.0,0.037500000000000006,5,10,0,45,4,False,PROVISIONAL
+pred,1.0,1.0,0.05,5,14,0,41,0,True,PROVISIONAL
+pred,1.25,1.0,0.0625,5,18,0,37,4,False,PROVISIONAL
+pred,1.5,1.0,0.07500000000000001,5,24,0,31,10,False,PROVISIONAL
+pred,2.0,1.0,0.1,5,37,0,18,23,False,PROVISIONAL

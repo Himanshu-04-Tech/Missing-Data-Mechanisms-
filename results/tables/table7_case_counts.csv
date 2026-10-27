@@ -1,0 +1,13 @@
+method,mechanism,A,B,C,D,n_conditions,thresholds_status
+mean,MCAR,0,1,0,4,5,PROVISIONAL
+mean,MAR,0,1,0,4,5,PROVISIONAL
+mean,MNAR,0,1,0,4,5,PROVISIONAL
+knn,MCAR,1,1,0,3,5,PROVISIONAL
+knn,MAR,1,0,0,4,5,PROVISIONAL
+knn,MNAR,0,1,0,4,5,PROVISIONAL
+regression,MCAR,2,1,0,2,5,PROVISIONAL
+regression,MAR,1,1,0,3,5,PROVISIONAL
+regression,MNAR,0,1,0,4,5,PROVISIONAL
+random_forest,MCAR,0,3,0,2,5,PROVISIONAL
+random_forest,MAR,0,2,0,3,5,PROVISIONAL
+random_forest,MNAR,0,1,0,4,5,PROVISIONAL

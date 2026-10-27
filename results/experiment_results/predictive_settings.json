@@ -1,0 +1,29 @@
+{
+  "rf_params": {
+    "n_estimators": 300,
+    "max_depth": null,
+    "min_samples_leaf": 1,
+    "max_features": 1.0,
+    "n_jobs": -1
+  },
+  "random_state": 42,
+  "score_on_truth": true,
+  "target": "log_price",
+  "features": [
+    "bedrooms",
+    "bathrooms",
+    "sqft_living",
+    "sqft_lot",
+    "floors",
+    "waterfront",
+    "view",
+    "condition",
+    "grade",
+    "yr_built",
+    "lat",
+    "long",
+    "sqft_living15",
+    "sqft_lot15",
+    "renovated"
+  ]
+}

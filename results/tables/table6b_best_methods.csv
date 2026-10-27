@@ -1,0 +1,16 @@
+mechanism,level,n_methods,best_predictive_method,best_statistical_method,same_method,predictive_metric,statistical_metric,predictive_margin,statistical_margin
+MCAR,0.1,4,regression,regression,True,rmse_gap,stat_mean_abs_z_affected,1.8789375872252118e-05,0.33166934289289673
+MCAR,0.2,4,random_forest,regression,False,rmse_gap,stat_mean_abs_z_affected,0.0009993967261883842,0.5575331765310305
+MCAR,0.3,4,random_forest,knn,False,rmse_gap,stat_mean_abs_z_affected,0.00030079107704715155,0.8651178369140764
+MCAR,0.4,4,random_forest,knn,False,rmse_gap,stat_mean_abs_z_affected,0.00010489108857345691,3.2760899184791707
+MCAR,0.5,4,random_forest,knn,False,rmse_gap,stat_mean_abs_z_affected,0.00041073896724856326,8.684203687501572
+MAR,0.1,4,random_forest,regression,False,rmse_gap,stat_mean_abs_z_affected,0.0005109310296550706,0.004773726568187642
+MAR,0.2,4,random_forest,knn,False,rmse_gap,stat_mean_abs_z_affected,0.0007747512414470635,0.09493187437134165
+MAR,0.3,4,random_forest,knn,False,rmse_gap,stat_mean_abs_z_affected,0.00018400062749339592,0.7235996185589149
+MAR,0.4,4,regression,knn,False,rmse_gap,stat_mean_abs_z_affected,0.0003385587182092309,0.4142461691916979
+MAR,0.5,4,regression,knn,False,rmse_gap,stat_mean_abs_z_affected,0.0011008379931476964,1.6212011530471244
+MNAR,0.1,4,random_forest,regression,False,rmse_gap,stat_mean_abs_z_affected,0.001177482193488422,0.4274121595064968
+MNAR,0.2,4,random_forest,regression,False,rmse_gap,stat_mean_abs_z_affected,0.0019482717564813616,0.620640392272918
+MNAR,0.3,4,random_forest,regression,False,rmse_gap,stat_mean_abs_z_affected,0.002368920789156308,0.08593852071353947
+MNAR,0.4,4,random_forest,knn,False,rmse_gap,stat_mean_abs_z_affected,0.0036852826996642725,2.2583483098807253
+MNAR,0.5,4,random_forest,knn,False,rmse_gap,stat_mean_abs_z_affected,0.00249434911266078,5.359201010468345
