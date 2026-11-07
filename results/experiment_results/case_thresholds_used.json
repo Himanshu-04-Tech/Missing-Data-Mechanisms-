@@ -3,7 +3,7 @@
   "stat_threshold": 1.0,
   "pred_metric": "rmse_gap_rel",
   "pred_threshold": 0.05,
-  "locked": false,
+  "locked": true,
   "sensitivity_factors": [
     0.5,
     0.75,
