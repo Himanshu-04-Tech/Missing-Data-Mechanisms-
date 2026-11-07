@@ -99,7 +99,7 @@ predictive:
 # problem definition, not to results. Then set thresholds_locked: true and commit again.
 # Both metrics are "smaller is better"; a condition is "good" when its repeat-averaged value is <= the threshold.
 cases:
-  thresholds_locked: false          # PROVISIONAL until the team agrees (D3) and commits
+  thresholds_locked: true         # PROVISIONAL until the team agrees (D3) and commits
   stat_metric: stat_mean_abs_z_affected
   stat_threshold: 1.0               # mean |z difference| on the 4 affected coefficients, in reference-SE units:
                                     # a shift within one reference standard error is inside the complete-data
