@@ -305,3 +305,21 @@ The imputed folders are large (about 230 MB and 180 MB) but fully reproducible w
 - All four methods are **single, deterministic** imputations: each missing cell gets one best guess, with no random noise. Standard errors computed on these datasets treat filled values as if they were observed, so they will tend to be too small. Multiple or stochastic imputation would address this but is not part of the current design.
 - `grade`, `bathrooms` and `yr_built` fills are **not rounded** to valid values (for example grade 7.66). This is standard for these methods; rounding would add its own error.
 - No method can recover what MNAR hides; the MNAR results show how much each method is misled, not a fix.
+
+## Recovery Lab (interactive app)
+
+A Streamlit app that presents the results and runs the project's own code live.
+
+```bash
+pip install -r requirements.txt
+streamlit run app/streamlit_app.py
+```
+
+| Page | What it does |
+|---|---|
+| Home | The "two dials" for any of the 60 conditions, plus three headline findings computed from `results/tables/` |
+| Live Lab | Removes values from a sample of houses with `src.missingness`, fills them with `src.imputation`, and refits OLS and a random forest live |
+| Results Explorer | Interactive Case A-D map with draggable thresholds, a per-condition coefficient view, and the disagreement strip |
+| Method & About | Pipeline, leakage rules, formulas, team, CSV downloads |
+
+The app only reads `results/tables/`, `results/experiment_results/` and `data/processed/`. It never loads the large corrupted datasets.

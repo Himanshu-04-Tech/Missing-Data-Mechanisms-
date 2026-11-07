@@ -1,0 +1,16 @@
+[theme]
+base = "dark"
+primaryColor = "#38bdf8"
+backgroundColor = "#08080f"
+secondaryBackgroundColor = "#16162a"
+textColor = "#f5f5f7"
+borderColor = "#22223a"
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
+headingFont = "'Space Grotesk':https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+
+[client]
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false
