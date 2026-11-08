@@ -47,8 +47,8 @@ with f2.container(key="glass_f2"):
     st.caption("A gap ≤ 5% counts as predicting well.")
 
 st.markdown(
-    f'<div class="card" style="margin-top:1rem">{pill("provisional")}<h4>A known limitation, shown openly</h4><p>The Case thresholds '
-    "(1 SE and 5%) were chosen by the team from the problem definition, not from the data. "
+    f'<div class="card" style="margin-top:1rem">{ui.threshold_pill(D.cases()["thresholds_status"].iloc[0])}<h4>A known limitation, shown openly</h4><p>The Case thresholds '
+    "(1 SE and 5%) were chosen by the team from the problem definition and locked before looking at the imputed results; they are still a judgement call. "
     "That is why the Results Explorer lets you drag them: the main pattern (many Case B, almost no Case C) holds over a wide range.</p></div>",
     unsafe_allow_html=True,
 )

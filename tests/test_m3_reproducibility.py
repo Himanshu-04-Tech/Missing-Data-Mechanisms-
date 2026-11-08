@@ -291,7 +291,7 @@ def test_audit_passes_on_a_complete_consistent_run(cfg, first_run, tmp_path):
     checks = audit(cfg, root=tmp_path)
     failed = [c for c in checks if c.status == FAIL]
     assert not failed, [(c.name, c.detail) for c in failed]
-    assert statuses(checks)["M5 cases: thresholds locked by the team (D3)"] == WARN  # config is still provisional
+    assert statuses(checks)["M5 cases: thresholds locked by the team (D3)"] == (PASS if cfg["cases"]["thresholds_locked"] else WARN)
 
 
 def test_audit_fails_when_outputs_are_missing(cfg, tmp_path):

@@ -141,6 +141,7 @@ p, li, label, .stMarkdown { font-family: 'Inter', sans-serif; }
 .pill-provisional { color: var(--text); border: 1px solid rgba(245,245,247,.35);
   background: repeating-linear-gradient(135deg, rgba(255,255,255,.14) 0 4px, transparent 4px 8px); }
 .pill-live { border: 1px solid rgba(74,222,128,.5); color: #4ade80; }
+.pill-locked { border: 1px solid rgba(245,245,247,.6); color: var(--text); }
 .pill-case { background: var(--grad2); color: #08080f; }
 .pill-good { border: 1px solid rgba(56,189,248,.55); color: #7dd3fc; }
 .pill-bad { border: 1px solid rgba(248,113,113,.55); color: #fca5a5; }
@@ -221,6 +222,13 @@ def pill(kind: str, text: str = "") -> str:
         "live": "● Live",
     }
     return f'<span class="pill pill-{kind}">{esc(text or default.get(kind, kind))}</span>'
+
+
+def threshold_pill(status: str) -> str:
+    """Status of the Case thresholds, as written by src/m3_cases.py (LOCKED or PROVISIONAL)."""
+    if str(status).upper() == "LOCKED":
+        return pill("locked", "🔒 Thresholds locked")
+    return pill("provisional", "Thresholds provisional")
 
 
 def card(num: str, title: str, body: str, extra: str = "") -> str:

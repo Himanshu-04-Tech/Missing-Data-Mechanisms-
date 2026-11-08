@@ -10,6 +10,7 @@ ref = D.predictive_reference()
 cfg = D.config()
 stat_thr = float(cfg["cases"]["stat_threshold"])
 pred_thr = float(cfg["cases"]["pred_threshold"])
+thr_status = cases["thresholds_status"].iloc[0]
 
 n_cond = len(cases)
 counts = cases["case"].value_counts()
@@ -80,7 +81,7 @@ st.markdown(
     f'<div style="text-align:center;margin:1.2rem 0 .3rem">{pill("observed")} &nbsp;'
     f'<span class="statline">{esc(ui.method_label(method))} · {mech} · {level:.0%} missing → '
     f'R² gap <b>{float(row["r2_gap_mean"]):.4f}</b>, yet <b>{coverage:.0f}%</b> of the 4 affected coefficients\' intervals hold the true value.</span>'
-    f'&nbsp; {pill("case", f"Case {case}")} <span class="statline">{esc(ui.CASE_MEANINGS[case])}</span> {pill("provisional", "thresholds provisional")}</div>',
+    f'&nbsp; {pill("case", f"Case {case}")} <span class="statline">{esc(ui.CASE_MEANINGS[case])}</span> {ui.threshold_pill(thr_status)}</div>',
     unsafe_allow_html=True,
 )
 
@@ -98,7 +99,7 @@ f1.markdown(
     ui.card("FINDING 01", "Prediction fine, statistics distorted",
             f"{n_b} of {n_cond} conditions are Case B: within 5% of the complete-data RMSE but more than one standard error off on the affected coefficients. "
             f"{n_c} conditions show the opposite pattern (Case C).",
-            extra=f'{pill("observed")} {pill("provisional")}<div class="big grad-text">{n_b}/{n_cond}</div>'),
+            extra=f'{pill("observed")} {ui.threshold_pill(thr_status)}<div class="big grad-text">{n_b}/{n_cond}</div>'),
     unsafe_allow_html=True,
 )
 f2.markdown(
