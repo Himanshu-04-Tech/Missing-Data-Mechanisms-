@@ -20,7 +20,7 @@ ui.section(
     "Every condition, on one map",
     "Each point is one condition (method × mechanism × level), averaged over 5 repeats. "
     "<b>Right</b> = statistics drift further from the truth. <b>Up</b> = predictions get worse. "
-    "The dashed lines are the Case thresholds. Drag the sliders to move them and see whether the story changes. "
+    "The dashed lines are the Case thresholds the team committed to. Drag the sliders to move them and see whether the story changes. "
     "Click a point to open its details.",
 )
 
@@ -52,7 +52,7 @@ for col, case in zip(k[:4], "ABCD"):
 n_changed = int(view["changed"].sum())
 k[4].markdown(
     f'<div class="kpi">{n_changed}</div><div class="kpi-label">labels changed</div>'
-    f'<div class="kpi-delta">of {len(view)} shown · {pill("provisional")}</div>',
+    f'<div class="kpi-delta">of {len(view)} shown<br>{ui.threshold_pill(cases["thresholds_status"].iloc[0])}</div>',
     unsafe_allow_html=True,
 )
 

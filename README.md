@@ -10,9 +10,16 @@ This study systematically introduces missingness across designated features at m
 
 ```text
 .
-├── config.yaml                     # Single source of truth for experiment parameters
-├── requirements.txt                # Python project dependencies
+├── config.yaml                     # Single source of truth for experiment parameters (incl. Case thresholds)
+├── requirements.txt                # Python project dependencies (pipeline + app)
 ├── README.md                       # Project documentation and usage guide
+├── .streamlit/config.toml          # Theme for the Recovery Lab app
+├── app/                            # Recovery Lab: interactive Streamlit app (see "Recovery Lab" below)
+│   ├── streamlit_app.py            # Entry point and top navigation
+│   ├── ui.py                       # Shared styling, chart theme, honesty labels
+│   ├── data.py                     # Read-only loaders for the result tables
+│   ├── lab_engine.py               # Live Lab: runs src/ missingness, imputation and OLS on a sample
+│   └── views/                      # home.py, lab.py, explorer.py, method.py
 ├── data/
 │   ├── raw/                        # Untouched raw datasets (kc_house_data.csv)
 │   ├── processed/                  # Cleaned data (clean_data.csv, split_indices.csv)
@@ -23,25 +30,61 @@ This study systematically introduces missingness across designated features at m
 │   ├── __init__.py
 │   ├── data_processing.py          # Ordered loading, deduplication, cleaning & splitting
 │   ├── missingness.py              # MCAR, MAR, MNAR generation functions
+│   ├── sweep.py                    # Generates the 75 corrupted datasets (3 mechanisms x 5 levels x 5 repeats)
+│   ├── handoff.py                  # Loaders for the 75 conditions (Member 1 -> Member 2)
 │   ├── imputation.py               # Mean, KNN, regression, random-forest imputation + scoring
-│   ├── statistics.py               # Statistical distributions, metrics, and bias calculations
-│   └── evaluation.py               # Downstream evaluation metrics (RMSE, MAE, R2)
+│   ├── statistics.py               # OLS inference and statistical-recovery metrics
+│   ├── evaluation.py               # Downstream evaluation metrics (RMSE, MAE, R2)
+│   ├── aggregate.py                # Repeat-level aggregation
+│   ├── plots.py                    # Colourblind-safe figures (missingness and statistical tracks)
+│   ├── m3_common.py                # Shared helpers for Member 3 modules
+│   ├── m3_onboarding.py            # M0: Member 3 setup and onboarding checks
+│   ├── m3_validate_imputed.py      # M1: validation of Member 2's imputed files
+│   ├── m3_stat_track.py            # M2: statistical-recovery track
+│   ├── m3_stat_plots.py            # M2: statistical-track figures
+│   ├── m3_predictive.py            # M3: predictive track (Random Forest)
+│   ├── m3_merge.py                 # M4: merge both tracks, build Table 6
+│   ├── m3_cases.py                 # M5: Case A/B/C/D flags, counts, threshold sensitivity
+│   ├── m3_case_plots.py            # M5: central figure, supporting and sensitivity plots
+│   ├── m3_reproduce.py             # M6: stage commands and output audit
+│   └── m3_report.py                # M7: results and discussion text from the saved tables
 ├── literature/                     # Literature notes (member2_imputation_literature.md)
 ├── report/                         # Report material (member2_explainer_and_viva.md)
-├── notebooks/                      # Exploratory and analytical Jupyter notebooks
+├── notebooks/                      # Jupyter notebooks (03_imputation.ipynb)
 ├── results/
-│   ├── tables/                     # Tabular experiment summaries and LaTeX/CSV exports
+│   ├── tables/                     # Tabular experiment summaries (Tables 4-7, case labels, sensitivity)
 │   ├── figures/                    # Visualizations, diagnostic plots, and charts
-│   └── experiment_results/         # Raw experiment run logs and metrics
+│   ├── experiment_results/         # Raw experiment run logs and metrics
+│   └── report/                     # Generated results text (results_discussion.md, findings.csv)
 ├── scripts/
 │   ├── verify_cleaning.py          # Data cleaning verification & sanity check script
+│   ├── verify_missingness.py       # Checks the MCAR / MAR / MNAR generator
+│   ├── run_sweep.py                # Generates the 75 corrupted datasets
+│   ├── verify_sweep.py             # Checks the sweep output
+│   ├── build_reference.py          # Complete-data reference OLS and correlations
+│   ├── run_complete_case.py        # Complete-case analysis over all 75 conditions
+│   ├── make_figures.py             # Aggregation + Member 1 figures
 │   ├── run_imputation.py           # Impute, check, save and score all conditions
 │   ├── imputation_progress.py      # Live progress view of imputation runs
 │   ├── check_knn_k.py              # Sensitivity check for the KNN neighbour count
-│   └── make_imputation_figures.py  # Imputation figures + method comparison table
+│   ├── make_imputation_figures.py  # Imputation figures + method comparison table
+│   ├── m3_00_onboarding.py         # M0: Member 3 onboarding checks
+│   ├── m3_01_validate_imputed.py   # M1: validate the imputed files
+│   ├── m3_02_stat_track.py         # M2: statistical-recovery track
+│   ├── m3_03_predictive.py         # M3: predictive track
+│   ├── m3_04_merge.py              # M4: merge tracks, Table 6
+│   ├── m3_05_cases.py              # M5: Case flags, central figure, sensitivity check
+│   ├── m3_06_run_all.py            # M6: run Member 3 stages 1-5 in order
+│   ├── m3_06_audit.py              # M6: audit outputs, compare two pipeline runs
+│   └── m3_07_report.py             # M7: regenerate results/report/
 └── tests/
-    ├── test_cleaning.py            # Automated pytest suite for data pipeline
-    └── test_imputation.py          # Automated pytest suite for imputation
+    ├── test_cleaning.py            # Data cleaning, splitting, raw-file immutability
+    ├── test_missingness.py         # Missingness mechanisms
+    ├── test_sweep.py               # Sweep generation and handoff loader
+    ├── test_statistics.py          # OLS inference and statistical recovery
+    ├── test_plots.py               # Aggregation and figures
+    ├── test_imputation.py          # Imputation (fills, leakage rules, determinism)
+    └── test_m3_*.py                # Member 3 modules M0-M7 (8 files)
 ```
 
 ## 3. Configuration (`config.yaml`)
@@ -293,7 +336,7 @@ python scripts/check_knn_k.py
 pytest tests/test_imputation.py -v
 ```
 
-The imputed folders are large (about 230 MB and 180 MB) but fully reproducible with the commands above, so they do not need to be shared by hand.
+The imputed folders are large (about 236 MB each) but fully reproducible with the commands above, so they do not need to be shared by hand.
 
 ### Supporting documents
 

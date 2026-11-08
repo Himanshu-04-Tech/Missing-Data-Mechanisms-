@@ -25,7 +25,7 @@ C1,Both tracks compared,OBSERVED RESULT,"Across the 60 method x mechanism x leve
 C2,Both tracks compared,OBSERVED RESULT,Within MCAR (20 conditions) the same rank correlation is +0.78.,table6_overall_recovery.csv
 C3,Both tracks compared,OBSERVED RESULT,Within MAR (20 conditions) the same rank correlation is +0.77.,table6_overall_recovery.csv
 C4,Both tracks compared,OBSERVED RESULT,Within MNAR (20 conditions) the same rank correlation is +0.66.,table6_overall_recovery.csv
-C5,Both tracks compared,OBSERVED RESULT,"Case labels for 60 conditions (statistical |z| <= 1, predictive relative RMSE gap <= 0.05; thresholds PROVISIONAL): Case A 5, Case B 14, Case C 0, Case D 41.",cases_by_condition.csv
+C5,Both tracks compared,OBSERVED RESULT,"Case labels for 60 conditions (statistical |z| <= 1, predictive relative RMSE gap <= 0.05; thresholds LOCKED): Case A 5, Case B 14, Case C 0, Case D 41.",cases_by_condition.csv
 C6,Both tracks compared,OBSERVED RESULT,"Conditions in Case B (predicts well, statistically distorted): mean/MCAR/10%, random_forest/MCAR/10%, knn/MCAR/20%, random_forest/MCAR/20%, regression/MCAR/30%, random_forest/MCAR/30%, mean/MAR/10%, random_forest/MAR/10%, regression/MAR/20%, random_forest/MAR/20%, mean/MNAR/10%, knn/MNAR/10% and 2 more.",cases_by_condition.csv
 C7,Both tracks compared,OBSERVED RESULT,The same method has the lowest statistical error and the lowest predictive error in 1 of 15 mechanism x level cells.,table6b_best_methods.csv
 C8,Both tracks compared,OBSERVED RESULT,Case sensitivity (one threshold moved at a time): statistical threshold x0.75: 3 labels change; statistical threshold x1.25: 0 labels change; predictive threshold x0.75: 4 labels change; predictive threshold x1.25: 4 labels change.,case_sensitivity.csv
